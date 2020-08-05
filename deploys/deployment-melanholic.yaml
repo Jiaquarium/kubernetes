@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: load-balancer-melanholic
+  name: melanholic
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: load-balancer-melanholic
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: load-balancer-melanholic
+    spec:
+      containers:
+      - image: jamesgu/melanholic:0.0.3
+        name: melanholic
+        ports:
+        - containerPort: 3000 # specified in web app
